@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from './styles/GlobalStyles';
+
+import { ReactComponent as Logo } from './assets/logo.svg';
+
+import PomodoroWrapper from './componets/pomodoro-wrapper/PomodoroWrapper';
+import PomodoroHeader from './componets/pomodoro-header/PomodoroHeader';
+import Timer from './componets/timer/Timer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <PomodoroWrapper>
+        <Logo />
+        <PomodoroHeader />
+        <Timer />
+      </PomodoroWrapper>
+    </>
   );
 }
 
