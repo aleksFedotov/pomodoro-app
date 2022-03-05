@@ -8,7 +8,7 @@ export default createGlobalStyle`
   --color-orange: hsl(0, 91%, 71%);
   --color-cyan: hsl(182, 91%, 71%);
   --color-purple: hsl(284, 89%, 74%);
-  ---color-white: hsl(0,0%, 100%);
+  --color-white: hsl(0,0%, 100%);
 
 
   --color-gray: hsl(229, 52%, 96%);
@@ -60,12 +60,9 @@ body {
   font-family: 'Outfit', sans-serif;
   min-height:100vh;
   font-weight: 700;
-
-
+  overflow-x: hidden;
   background: var(--color-dark-blue);
   color: var(---color-white);
-  overflow:hidden;
-  
 }
 
 h1 {
@@ -96,8 +93,8 @@ h4 {
   position: relative;
   min-height: inherit;
   width: 100%;
-  display: flex;
-  justify-content: center;
+
+ 
   padding: 2.4rem;
   
   

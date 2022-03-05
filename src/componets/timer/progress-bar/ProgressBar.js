@@ -2,19 +2,24 @@ import React from 'react';
 
 import { ProgressSvg, SvgCircle } from './ProgressBarStyles';
 
-const ProgressBar = () => {
+const ProgressBar = ({ progress, radius, stroekWidth }) => {
   const color = 'orange';
+
+  const barRadius = radius - stroekWidth * 2;
+  const circumference = barRadius * 2 * Math.PI;
+  const strokeDashOffset = circumference - (progress / 100) * circumference;
+
   return (
     <ProgressSvg>
       <SvgCircle
         themeColor={color}
         fill="transparent"
-        strokeWidth={12}
-        strokeDasharray={100}
-        strokeDashoffset={100}
-        r={161}
-        cx={182}
-        cy={182}
+        strokeWidth={stroekWidth}
+        strokeDasharray={`${circumference} ${circumference}`}
+        strokeDashoffset={strokeDashOffset}
+        r={barRadius}
+        cx={radius}
+        cy={radius}
         stroke-linecap="round"
       />
     </ProgressSvg>

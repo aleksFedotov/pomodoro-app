@@ -35,6 +35,10 @@ export const TimerTypeBtn = styled.button`
   &:hover {
     opacity: 1;
   }
+
+  @media (max-width: 450px) {
+    font-size: var(--font-size-body-mobile);
+  }
 `;
 
 export const Selector = styled.div`
@@ -48,4 +52,8 @@ export const Selector = styled.div`
   background-color: var(--color-${(props) => props.colorTheme});
   transform: translateX(-${(props) => props.position});
   transition: all 0.3s ease;
+
+  @media (max-width: 400px) {
+    max-width: 10.6rem;
+  }
 `;

@@ -5,6 +5,8 @@ export const ProgressSvg = styled.svg`
   height: 100%;
   position: absolute;
   z-index: -11;
+  transform: rotate(270deg);
+  transform-origin: center;
 `;
 
 export const SvgCircle = styled.circle`
