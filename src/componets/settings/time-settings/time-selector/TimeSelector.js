@@ -1,21 +1,36 @@
 import React from 'react';
 
-import { Title, SelectorBox } from './TimeSelectorStyles';
+import { useDispatch } from 'react-redux';
+import { pomodoroActions } from '../../../../store/pomodoro';
 
-const TimeSelector = ({ timer }) => {
+import { TimerLabel, TimerInput, TimerWrapper } from './TimeSelectorStyles';
+
+const TimeSelector = ({ timer, defaultTime, min, max }) => {
+  const dispatch = useDispatch();
+
+  const changeHandler = (e) => {
+    dispatch(
+      pomodoroActions.updateTimersSettings({
+        timerType: e.target.dataset.timer,
+        time: e.target.value,
+      })
+    );
+  };
+
   return (
-    <SelectorBox data-timer={timer}>
-      <Title>{timer}</Title>
-      <label htmlFor="pomodoro">pomodoro</label>
-      <input
+    <TimerWrapper>
+      <TimerLabel htmlFor={timer}>{timer}</TimerLabel>
+      <TimerInput
+        data-timer={timer.split(' ')[0]}
         type="number"
-        name="pomodoro"
-        id="pomodoro"
-        min="5"
-        max="90"
-        defaultValue={25}
+        name={timer}
+        id={timer}
+        min={min}
+        max={max}
+        defaultValue={defaultTime}
+        onChange={changeHandler}
       />
-    </SelectorBox>
+    </TimerWrapper>
   );
 };
 

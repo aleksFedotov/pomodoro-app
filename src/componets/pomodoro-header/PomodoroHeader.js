@@ -13,7 +13,7 @@ const PomodoroHeader = () => {
   const [timerType, setTimerType] = useState('pomodoro');
   const pomodoro = useSelector((state) => state.pomodoro);
 
-  const { settings } = pomodoro;
+  const { appliedSettings } = pomodoro;
 
   const selectTypeHandler = (e) => {
     setTimerType(e.target.dataset.type);
@@ -28,7 +28,7 @@ const PomodoroHeader = () => {
   } else {
     position = '100%';
   }
-  const color = 'orange';
+
   return (
     <HeaderWrapper>
       <BtnWrapper>
@@ -53,7 +53,7 @@ const PomodoroHeader = () => {
         >
           long break
         </TimerTypeBtn>
-        <Selector colorTheme={settings.selectedColor} position={position} />
+        <Selector colorTheme={appliedSettings.color} position={position} />
       </BtnWrapper>
     </HeaderWrapper>
   );

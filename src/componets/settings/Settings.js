@@ -3,9 +3,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { pomodoroActions } from '../../store/pomodoro';
 
-import { SettingsHeader, SettingsContentWrapper } from './SettingsStyles';
+import {
+  SettingsHeader,
+  SettingsContentWrapper,
+  ApplyBtn,
+} from './SettingsStyles';
 import { ReactComponent as Close } from '../../assets/icon-close.svg';
 import TimeSettings from './time-settings/TimeSettings';
+import FontColorSettings from './font-&-color-settings/FontColorSettings';
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -14,9 +19,9 @@ const Settings = () => {
     dispatch(pomodoroActions.toggleModal());
   };
 
-  const ssumbitHandler = (e) => {
+  const applyHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    dispatch(pomodoroActions.applySettings());
   };
 
   return (
@@ -27,7 +32,9 @@ const Settings = () => {
       </SettingsHeader>
       <SettingsContentWrapper>
         <TimeSettings />
-        <button onClick={ssumbitHandler}>Apply</button>
+        <FontColorSettings heading="font" />
+        <FontColorSettings heading="color" />
+        <ApplyBtn onClick={applyHandler}>Apply</ApplyBtn>
       </SettingsContentWrapper>
     </>
   );
