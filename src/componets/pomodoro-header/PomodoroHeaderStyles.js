@@ -27,6 +27,7 @@ export const TimerTypeBtn = styled.button`
     props.isSelected
       ? 'var(--color-very-dark-blue)'
       : 'var(--color-very-light-blue)'};
+  font-family: inherit;
   font-size: var(--font-size-body);
   font-weight: inherit;
   z-index: ${(props) => (props.isSelected ? '20' : '5')};

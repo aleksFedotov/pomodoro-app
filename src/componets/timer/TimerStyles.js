@@ -51,10 +51,14 @@ export const InnerCircle = styled.div`
 
   @media (max-width: 480px) {
     padding: 1.6rem;
+  }
+`;
 
-    h1 {
-      font-size: 8rem;
-    }
+export const Time = styled.h1`
+  font-weight: ${(props) => props.fontWeight};
+  letter-spacing: ${(props) => (props.fontWeight === '500' ? '-10px' : '-5px')};
+  @media (max-width: 480px) {
+    font-size: 8rem;
   }
 `;
 
@@ -67,6 +71,7 @@ export const ControlBtn = styled.button`
   background-color: transparent;
   padding: 1rem;
   text-transform: uppercase;
+  font-family: inherit;
   color: inherit;
 
   &:hover {

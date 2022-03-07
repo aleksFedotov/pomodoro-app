@@ -1,9 +1,13 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { ProgressSvg, SvgCircle } from './ProgressBarStyles';
 
 const ProgressBar = ({ progress, radius, stroekWidth }) => {
-  const color = 'orange';
+  const { appliedSettings } = useSelector((state) => state.pomodoro);
+
+  const { color } = appliedSettings;
 
   const barRadius = radius - stroekWidth * 2;
   const circumference = barRadius * 2 * Math.PI;

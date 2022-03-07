@@ -22,6 +22,7 @@ const Settings = () => {
   const applyHandler = (e) => {
     e.preventDefault();
     dispatch(pomodoroActions.applySettings());
+    dispatch(pomodoroActions.toggleModal());
   };
 
   return (

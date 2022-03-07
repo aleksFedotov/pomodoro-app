@@ -6,18 +6,18 @@ const initialState = {
   font: 'Kumbh Sans',
   timerType: 'pomodoro',
   timerSettingsSelected: {
-    pomodoro: '25',
-    short: '5',
-    long: '15',
+    pomodoro: 1500,
+    short: 300,
+    long: 900,
   },
 
   appliedSettings: {
     color: 'orange',
     font: 'Kumbh Sans',
     timerSettings: {
-      pomodoro: 25,
-      short: 5,
-      long: 10,
+      pomodoro: 1500,
+      short: 300,
+      long: 900,
     },
   },
 };
@@ -46,6 +46,9 @@ const pomodoroSlice = createSlice({
           long: state.timerSettingsSelected.long,
         },
       };
+    },
+    updateTimerType(state, action) {
+      state.timerType = action.payload;
     },
   },
 });

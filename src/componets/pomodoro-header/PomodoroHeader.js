@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { pomodoroActions } from '../../store/pomodoro';
 
 import {
   HeaderWrapper,
@@ -10,13 +11,11 @@ import {
 } from './PomodoroHeaderStyles';
 
 const PomodoroHeader = () => {
-  const [timerType, setTimerType] = useState('pomodoro');
-  const pomodoro = useSelector((state) => state.pomodoro);
-
-  const { appliedSettings } = pomodoro;
-
+  const { timerType, appliedSettings } = useSelector((state) => state.pomodoro);
+  const { color } = appliedSettings;
+  const dispatch = useDispatch();
   const selectTypeHandler = (e) => {
-    setTimerType(e.target.dataset.type);
+    dispatch(pomodoroActions.updateTimerType(e.target.dataset.type));
   };
 
   let position;
@@ -53,7 +52,7 @@ const PomodoroHeader = () => {
         >
           long break
         </TimerTypeBtn>
-        <Selector colorTheme={appliedSettings.color} position={position} />
+        <Selector colorTheme={color} position={position} />
       </BtnWrapper>
     </HeaderWrapper>
   );
