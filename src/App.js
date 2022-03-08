@@ -17,9 +17,10 @@ function App() {
   const dispatch = useDispatch();
   const pomodoro = useSelector((state) => state.pomodoro);
 
-  const { isModalOpened } = pomodoro;
+  const { isModalOpened, isRunning } = pomodoro;
 
   const modalHandler = () => {
+    if (isRunning) dispatch(pomodoroActions.toggleIsRunnning());
     dispatch(pomodoroActions.toggleModal());
   };
 

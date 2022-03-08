@@ -1,39 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { pomodoroActions } from '../../store/pomodoro';
 
 import {
   TimerWrapper,
   OuterCircle,
   InnerCircle,
   ControlBtn,
-  Time,
 } from './TimerStyles';
 
 import ProgressBar from './progress-bar/ProgressBar';
+import Display from './display/Display';
 
 const Timer = () => {
-  const { appliedSettings, timerType } = useSelector((state) => state.pomodoro);
-  const { color, font, timerSettings } = appliedSettings;
+  const dispatch = useDispatch();
+  const { appliedSettings, timerType, isRunning } = useSelector(
+    (state) => state.pomodoro
+  );
+  const { color, timerSettings } = appliedSettings;
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [currentTime, setCurrentTime] = useState(timerSettings[timerType]);
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(25);
+  const [secondsLeft, setSecondsLeft] = useState(timerSettings[timerType]);
+
   const [progress, setProgress] = useState(100);
 
-  // time format function
-
-  const formatTime = (time) => {
-    const minutes = ~~((time % 3600) / 60);
-    const secodns = ~~time % 60;
-    setMinutes(minutes);
-    setSeconds(secodns);
-  };
+  const initialTime = timerSettings[timerType];
 
   // check winow width
 
   const changeWindowWidth = () => {
     setWindowWidth(window.innerWidth);
+  };
+
+  const controlHandler = () => {
+    if (secondsLeft === 0) {
+      setSecondsLeft(timerSettings[timerType]);
+    } else {
+      dispatch(pomodoroActions.toggleIsRunnning());
+    }
   };
 
   useEffect(() => {
@@ -54,37 +58,34 @@ const Timer = () => {
     stroekWidth = 8;
   }
 
-  // changing time text settings basd on font family
-
-  let fontWeight = '700';
-
-  if (font === 'Space Mono') {
-    fontWeight = '500';
-  }
+  useEffect(() => {
+    setSecondsLeft(timerSettings[timerType]);
+  }, [timerType, timerSettings]);
 
   useEffect(() => {
-    formatTime(currentTime);
-  }, [currentTime]);
+    const currentProgress = (secondsLeft / initialTime) * 100;
+    setProgress(currentProgress);
+  }, [secondsLeft, initialTime]);
 
-  // useEffect(() => {
-  //   if (progress > 0) {
-  //     let timer = setInterval(() => {
-  //       setProgress((prevState) => prevState - 1);
-  //       console.log(progress);
-  //     }, 1000);
-  //     return () => clearInterval(timer);
-  //   }
-  // }, [progress]);
+  useEffect(() => {
+    if (isRunning) {
+      if (secondsLeft === 0) return;
+      let timer = setInterval(() => {
+        setSecondsLeft((secondsLeft) => secondsLeft - 1);
+        console.log(secondsLeft);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [isRunning, secondsLeft]);
   return (
     <TimerWrapper>
       <OuterCircle>
         <InnerCircle>
-          <Time fontWeight={fontWeight}>
-            {minutes.toString().padStart(2, '0')}:
-            {seconds.toString().padStart(2, '0')}
-          </Time>
-          <ControlBtn themeColor={color}>
-            <h3>Start</h3>
+          <Display secondsLeft={secondsLeft} />
+          <ControlBtn themeColor={color} onClick={controlHandler}>
+            {secondsLeft !== 0 && <h3>{isRunning ? 'Pause' : 'Start'}</h3>}
+
+            {secondsLeft === 0 && <h3>restart</h3>}
           </ControlBtn>
           <ProgressBar
             progress={progress}

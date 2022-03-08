@@ -2,6 +2,7 @@ import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialState = {
   isModalOpened: false,
+  isRunning: false,
   color: 'orange',
   font: 'Kumbh Sans',
   timerType: 'pomodoro',
@@ -31,7 +32,7 @@ const pomodoroSlice = createSlice({
     },
     updateTimersSettings(state, action) {
       state.timerSettingsSelected[action.payload.timerType] =
-        action.payload.time;
+        parseInt(action.payload.time) * 60;
     },
     updateColorOrFont(state, action) {
       state[action.payload.setting] = action.payload.value;
@@ -49,6 +50,9 @@ const pomodoroSlice = createSlice({
     },
     updateTimerType(state, action) {
       state.timerType = action.payload;
+    },
+    toggleIsRunnning(state) {
+      state.isRunning = !state.isRunning;
     },
   },
 });

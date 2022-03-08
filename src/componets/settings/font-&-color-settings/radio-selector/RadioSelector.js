@@ -14,7 +14,7 @@ const RadioSelector = ({ settingsType, value, labelContent }) => {
   let bgColor;
   let textColor;
   let isSelected;
-  console.log(color, font);
+
   const updateSettingHandlrer = () => {
     dispatch(
       pomodoroActions.updateColorOrFont({
