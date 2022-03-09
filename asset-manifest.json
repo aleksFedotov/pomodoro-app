@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/pomodoro-app/static/js/main.1a1d8d22.js",
+    "static/js/845.c3338469.chunk.js": "/pomodoro-app/static/js/845.c3338469.chunk.js",
+    "static/js/787.a4652825.chunk.js": "/pomodoro-app/static/js/787.a4652825.chunk.js",
+    "static/media/timesUp.mp3": "/pomodoro-app/static/media/timesUp.0cbb5adfa4ca49bb47c6.mp3",
+    "static/media/startTimer.mp3": "/pomodoro-app/static/media/startTimer.2968a7452038c15f4208.mp3",
+    "static/media/pauseTimer.mp3": "/pomodoro-app/static/media/pauseTimer.d73c474578244c6a1b9f.mp3",
+    "static/media/logo.svg": "/pomodoro-app/static/media/logo.7479961e8a1563f1f8124a7cff89bef2.svg",
+    "static/media/slide.mp3": "/pomodoro-app/static/media/slide.3c8db537f53afb33abba.mp3",
+    "static/media/icon-settings.svg": "/pomodoro-app/static/media/icon-settings.e0a317db0ff4a140aa696b8ac9c4c393.svg",
+    "index.html": "/pomodoro-app/index.html",
+    "static/media/icon-close.svg": "/pomodoro-app/static/media/icon-close.79cfecafebb13ec38327a8a293785c9d.svg",
+    "main.1a1d8d22.js.map": "/pomodoro-app/static/js/main.1a1d8d22.js.map",
+    "845.c3338469.chunk.js.map": "/pomodoro-app/static/js/845.c3338469.chunk.js.map",
+    "787.a4652825.chunk.js.map": "/pomodoro-app/static/js/787.a4652825.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.1a1d8d22.js"
+  ]
+}
