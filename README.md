@@ -41,8 +41,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/aleksFedotov/pomodoro-app)
-- Live Site URL: [Add live site URL here](https://aleksfedotov.github.io/pomodoro-app/)
+- Solution URL: [https://github.com/aleksFedotov/pomodoro-app]
+- Live Site URL: [https://aleksfedotov.github.io/pomodoro-app/]
 
 ## My process
 
