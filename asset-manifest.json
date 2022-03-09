@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/pomodoro-app/static/js/main.5ba9b65b.js",
+    "main.js": "/pomodoro-app/static/js/main.bff5c434.js",
     "static/js/845.c3338469.chunk.js": "/pomodoro-app/static/js/845.c3338469.chunk.js",
     "static/js/787.a4652825.chunk.js": "/pomodoro-app/static/js/787.a4652825.chunk.js",
     "static/media/timesUp.mp3": "/pomodoro-app/static/media/timesUp.0cbb5adfa4ca49bb47c6.mp3",
@@ -11,11 +11,11 @@
     "static/media/icon-settings.svg": "/pomodoro-app/static/media/icon-settings.e0a317db0ff4a140aa696b8ac9c4c393.svg",
     "index.html": "/pomodoro-app/index.html",
     "static/media/icon-close.svg": "/pomodoro-app/static/media/icon-close.79cfecafebb13ec38327a8a293785c9d.svg",
-    "main.5ba9b65b.js.map": "/pomodoro-app/static/js/main.5ba9b65b.js.map",
+    "main.bff5c434.js.map": "/pomodoro-app/static/js/main.bff5c434.js.map",
     "845.c3338469.chunk.js.map": "/pomodoro-app/static/js/845.c3338469.chunk.js.map",
     "787.a4652825.chunk.js.map": "/pomodoro-app/static/js/787.a4652825.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.5ba9b65b.js"
+    "static/js/main.bff5c434.js"
   ]
 }
