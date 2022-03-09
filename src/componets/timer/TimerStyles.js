@@ -65,6 +65,10 @@ export const ControlBtn = styled.button`
   text-transform: uppercase;
   font-family: inherit;
   color: inherit;
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-header-m);
+  letter-spacing: var(--letter-spacing-heading-l);
+  margin-right: -1.5rem;
 
   &:hover {
     color: var(--color-${(props) => props.themeColor});
@@ -72,10 +76,9 @@ export const ControlBtn = styled.button`
 
   @media (max-width: 480px) {
     bottom: 4rem;
-    h3 {
-      font-size: var(-font-size-body);
-      letter-spacing: 13.13px;
-      margin-right: -13.13px;
-    }
+
+    font-size: var(-font-size-body);
+    letter-spacing: 13.13px;
+    margin-right: -13.13px;
   }
 `;

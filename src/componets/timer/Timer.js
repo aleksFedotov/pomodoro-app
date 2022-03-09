@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { pomodoroActions } from '../../store/pomodoro';
+import useSound from 'use-sound';
+
+import starSfx from '../../assets/sounds/startTimer.mp3';
+import pauseSfx from '../../assets/sounds/pauseTimer.mp3';
+import timeUpSfx from '../../assets/sounds/timesUp.mp3';
 
 import {
   TimerWrapper,
@@ -11,16 +16,29 @@ import {
 
 import ProgressBar from './progress-bar/ProgressBar';
 import Display from './display/Display';
+import Mute from './mute/Mute';
 
 const Timer = () => {
   const dispatch = useDispatch();
-  const { appliedSettings, timerType, isRunning } = useSelector(
-    (state) => state.pomodoro
-  );
+  const { appliedSettings, timerType, isRunning, isVolume, secondsLeft } =
+    useSelector((state) => state.pomodoro);
   const { color, timerSettings } = appliedSettings;
 
+  const [start] = useSound(starSfx, {
+    interrupt: true,
+    volume: isVolume,
+  });
+
+  const [pause] = useSound(pauseSfx, {
+    interrupt: true,
+    volume: isVolume,
+  });
+
+  const [timeUp] = useSound(timeUpSfx, {
+    volume: isVolume,
+  });
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [secondsLeft, setSecondsLeft] = useState(timerSettings[timerType]);
 
   const [progress, setProgress] = useState(100);
 
@@ -34,8 +52,13 @@ const Timer = () => {
 
   const controlHandler = () => {
     if (secondsLeft === 0) {
-      setSecondsLeft(timerSettings[timerType]);
+      start();
+      dispatch(pomodoroActions.upDateSecondsLeft(timerSettings[timerType]));
+    } else if (isRunning) {
+      pause();
+      dispatch(pomodoroActions.toggleIsRunnning());
     } else {
+      start();
       dispatch(pomodoroActions.toggleIsRunnning());
     }
   };
@@ -59,33 +82,34 @@ const Timer = () => {
   }
 
   useEffect(() => {
-    setSecondsLeft(timerSettings[timerType]);
-  }, [timerType, timerSettings]);
+    if (secondsLeft === 0) {
+      timeUp();
+    }
 
-  useEffect(() => {
     const currentProgress = (secondsLeft / initialTime) * 100;
+
     setProgress(currentProgress);
-  }, [secondsLeft, initialTime]);
+  }, [secondsLeft, initialTime, timeUp]);
 
   useEffect(() => {
     if (isRunning) {
       if (secondsLeft === 0) return;
       let timer = setInterval(() => {
-        setSecondsLeft((secondsLeft) => secondsLeft - 1);
-        console.log(secondsLeft);
+        dispatch(pomodoroActions.upDateSecondsLeft(secondsLeft - 1));
       }, 1000);
       return () => clearInterval(timer);
     }
-  }, [isRunning, secondsLeft]);
+  }, [isRunning, secondsLeft, dispatch]);
   return (
     <TimerWrapper>
       <OuterCircle>
         <InnerCircle>
+          <Mute />
           <Display secondsLeft={secondsLeft} />
           <ControlBtn themeColor={color} onClick={controlHandler}>
-            {secondsLeft !== 0 && <h3>{isRunning ? 'Pause' : 'Start'}</h3>}
+            {secondsLeft !== 0 && `${isRunning ? 'Pause' : 'Start'}`}
 
-            {secondsLeft === 0 && <h3>restart</h3>}
+            {secondsLeft === 0 && 'restart'}
           </ControlBtn>
           <ProgressBar
             progress={progress}

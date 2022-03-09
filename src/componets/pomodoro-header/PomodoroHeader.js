@@ -2,6 +2,9 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { pomodoroActions } from '../../store/pomodoro';
+import useSound from 'use-sound';
+
+import slideSfx from '../../assets/sounds/slide.mp3';
 
 import {
   HeaderWrapper,
@@ -11,14 +14,22 @@ import {
 } from './PomodoroHeaderStyles';
 
 const PomodoroHeader = () => {
-  const { timerType, appliedSettings, isRunning } = useSelector(
+  const { timerType, appliedSettings, isRunning, isVolume } = useSelector(
     (state) => state.pomodoro
   );
-  const { color } = appliedSettings;
+  const { color, timerSettings } = appliedSettings;
   const dispatch = useDispatch();
+  const [play] = useSound(slideSfx, {
+    volume: isVolume,
+  });
+
   const selectTypeHandler = (e) => {
     dispatch(pomodoroActions.updateTimerType(e.target.dataset.type));
+    dispatch(
+      pomodoroActions.upDateSecondsLeft(timerSettings[e.target.dataset.type])
+    );
     if (isRunning) dispatch(pomodoroActions.toggleIsRunnning());
+    play();
   };
 
   let position;

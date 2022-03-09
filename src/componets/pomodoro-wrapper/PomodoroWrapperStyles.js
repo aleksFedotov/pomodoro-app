@@ -11,7 +11,7 @@ export const PomodoroWrap = styled.main`
   font-family: ${(props) => props.font}, sans-serif;
 
   .logo {
-    margin-top: 2rem;
+    margin-top: 2.8rem;
 
     @media (max-width: 480px) {
       margin-top: 1rem;

@@ -11,16 +11,28 @@ export const SettingsHeader = styled.div`
   .closeBtn {
     cursor: pointer;
   }
+
+  @media (max-width: 480px) {
+    padding: 2.4rem;
+  }
 `;
 export const SettingsContentWrapper = styled.form`
   padding: 2.4rem 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 480px) {
+    padding: 2.4rem;
+  }
 `;
 
 export const Heading = styled.h4`
   text-transform: uppercase;
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const ApplyBtn = styled.button`
@@ -44,5 +56,9 @@ export const ApplyBtn = styled.button`
 
   &:active {
     transform: scale(0.98);
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: -5rem;
   }
 `;
