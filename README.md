@@ -1,13 +1,3 @@
-# Frontend Mentor - Pomodoro app
-
-![Design preview for the Pomodoro app coding challenge](./preview.jpg)
-
-## Welcome! 👋
-
-Thanks for purchasing this premium Frontend Mentor coding challenge.
-
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
-
 # Frontend Mentor - Pomodoro app solution
 
 This is a solution to the [Pomodoro app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
